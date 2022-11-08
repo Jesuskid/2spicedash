@@ -1,0 +1,54 @@
+.head {
+    font-family: cursive;
+    font-weight: 800;
+    font-size: 60px;
+    color: rgb(254, 22, 61);
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgb(255, 255, 255);
+}
+
+.main-auth {
+    /* background: rgb(10, 0, 13);
+    background: linear-gradient(270deg, rgba(10, 0, 13, 1) 0%, rgba(99, 61, 13, 1) 48%, rgba(0, 0, 0, 1) 100%); */
+    background: rgb(10, 0, 13);
+    background: linear-gradient(270deg, rgba(10, 0, 13, 1) 0%, rgba(91, 15, 36, 1) 48%, rgba(0, 0, 0, 1) 100%);
+
+}
+
+.section {
+    background: url('../../assets/start.png');
+    height: 100%;
+
+}
+
+.a {
+    cursor: pointer;
+}
+
+.red-btn {
+    background: rgb(218, 0, 36) !important;
+    border: none !important;
+}
+
+.large-btn {
+    font-size: 40px !important;
+    font-weight: bold;
+    border-radius: 3px !important;
+    box-shadow: 2px 3px 5px rgb(165, 164, 164);
+    letter-spacing: 0.1cm;
+    font-weight: 700 !important;
+}
+
+.login {
+    background: rgb(234, 234, 234);
+    border-radius: 5px;
+    box-shadow: 2px 3px 5px rgb(245, 244, 244);
+}
+
+.red-btn:active {
+    border: 1px solid rgb(218, 0, 36) !important;
+}
+
+.red-btn:hover {
+    border: 1px solid rgb(218, 0, 36) !important;
+}

@@ -1,0 +1,22 @@
+.spin {
+    transition: all 10s ease-out;
+    transform: rotate(50000000000000deg);
+
+}
+
+.spin-btn {
+    background: rgb(255, 108, 169) !important;
+    border: none !important;
+    padding: 10px 20px !important;
+    font-size: 18px !important;
+    border-radius: 50px !important;
+    font-weight: 900 !important;
+    font-family: cursive !important;
+    box-shadow: -1px -3px 1px rgb(189, 188, 188) !important;
+}
+
+.spin-btn:active {
+    border: 3px solid pink !important;
+    box-shadow: none !important;
+
+}

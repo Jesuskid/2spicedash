@@ -1,0 +1,62 @@
+.currency-tab {
+    border-radius: 50px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.currency-tab:hover {
+    border-radius: 50px;
+    background: pink;
+}
+
+
+.special-input {
+    border: none;
+    background: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 18px;
+}
+
+.special-input:active {
+    border: none !important;
+    background: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.special-input:focus {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+}
+
+.info-area {
+    background: rgb(255, 236, 241) !important;
+    border-radius: 20px;
+}
+
+
+
+.select-bar {
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: rgb(40, 40, 41);
+}
+
+
+.swap {
+    border: 1px solid rgb(231, 231, 231);
+    border-radius: 20px;
+}
+
+.swap-title {
+    align-items: flex-start !important;
+    text-align: left !important;
+    border-bottom: 1px solid rgb(231, 231, 231);
+    font-size: 14px !important;
+}

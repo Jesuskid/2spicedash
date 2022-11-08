@@ -1,0 +1,118 @@
+.black-btn {
+    text-transform: uppercase;
+    font-size: 12px !important;
+    border: 1px solid rgb(189, 189, 189) !important;
+    font-weight: 600 !important;
+    border-radius: 3px !important;
+    color: rgb(98, 98, 98) !important;
+    padding: 20 50px !important;
+
+}
+
+.black-btn:hover {
+    background: white !important;
+    color: black !important;
+    border: 1.3px solid black;
+}
+
+.tab-active {
+    background: rgb(255, 107, 156) !important;
+    color: white !important;
+    border: 1.3px solid rgb(255, 107, 156) !important;
+}
+
+.black-btn:active {
+    background: rgb(255, 107, 156) !important;
+    color: white !important;
+    border: 1.3px solid rgb(255, 107, 156) !important;
+}
+
+.card-o {
+    box-shadow: 1px 1px 3px rgb(234, 234, 234);
+    border-radius: 5px;
+    background-color: white;
+}
+
+.dash-background {
+    background: rgb(247, 250, 255);
+}
+
+.border-btm {
+    border-bottom: 1px solid rgb(229, 229, 229);
+}
+
+.btn-l {
+    margin-left: 30px !important;
+}
+
+.text-blue {
+    color: blue;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.text-sm {
+    color: rgb(185, 185, 185);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.opt-code {
+    font-size: 25px !important;
+    font-weight: bold;
+    text-decoration: none;
+    font-weight: 600 !important;
+    text-align: center;
+    padding: 0 0px !important;
+}
+
+.warning {
+    background: rgb(255, 212, 212);
+    color: rgb(242, 68, 68);
+    border-radius: 10px;
+    border: 1px solid red;
+}
+
+.card {
+    overflow-x: scroll !important;
+}
+
+.underline-selection {
+    text-decoration: underline;
+    font-size: 18px;
+    color: blue;
+    cursor: pointer;
+}
+
+.no-underline-selection {
+    font-size: 18px;
+    color: black;
+    cursor: pointer;
+}
+
+/* Media queries */
+@media screen and (max-width: 699px) {
+    .big-menu {
+        display: none;
+    }
+
+    .small-menu {
+        display: block;
+    }
+
+    .modified-link {
+        padding-right: 20px !important;
+        margin-right: 30px !important;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .big-menu {
+        display: block !important;
+    }
+
+    .small-menu {
+        display: none !important;
+    }
+
+}
