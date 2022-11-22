@@ -2,11 +2,13 @@ import React, { useState, useContext, useEffect } from 'react'
 import { Row, Col, Button, Card, InputGroup, Form, Modal } from 'react-bootstrap'
 import spiceLogo from '../../../assets/spice.png'
 import { useWeb3Contract, useMoralisQuery, useMoralis, useMoralisCloudFunction } from 'react-moralis'
-import { REWARD_CONTRACT_ABI, REWARD_CONTRACT_ADDRESS, backendUrl, GetFormattedDate } from '../../../Constants'
+import { REWARD_CONTRACT_ABI, REWARD_CONTRACT_ADDRESS, backendUrl, GetFormattedDate, BINANCE_RPC, SPICE_ABI, SPICE_CONTRACT_ADDRESS } from '../../../Constants'
 import { GemContext } from '../../../GemContext'
 import OtpInput from 'react-otp-input'
 import axios from 'axios'
+import { ethers } from 'ethers'
 
+window.ethersProvider = new ethers.providers.StaticJsonRpcProvider(BINANCE_RPC)
 
 
 const Withdraw = ({ deduct_gems }) => {
@@ -17,6 +19,7 @@ const Withdraw = ({ deduct_gems }) => {
     const [withdrawAccount, setWithdrawAccount] = useState('')
     const [gasFees, setGasFees] = useState(0.15)
     const MAX_WITHDRAW_AMOUNT = 300
+    const [walletBalance, setWalletBalance] = useState(0)
 
 
     const [otp, setOtp] = useState('');
@@ -29,6 +32,24 @@ const Withdraw = ({ deduct_gems }) => {
 
 
     const { state, update } = useContext(GemContext)
+
+
+    const getWalletBalance = async () => {
+        window.ethersProvider.getGasPrice().then(async (currentGasPrice) => {
+            const provider = window.ethersProvider
+            let contract = new ethers.Contract(
+                SPICE_CONTRACT_ADDRESS,
+                SPICE_ABI,
+                provider
+            )
+
+            const price = await contract.fetchPCSPrice()
+            const balance = await contract.balanceOf(user.get('gen_account'))
+            const value = price * balance
+            setWalletBalance(value)
+        })
+    }
+
 
 
 
@@ -87,6 +108,10 @@ const Withdraw = ({ deduct_gems }) => {
     // }
 
     const requestOtp = async () => {
+        if (walletBalance < 50) {
+            alert('You must have at least $50 worth spice in your internal wallet to withdraw')
+            return
+        }
         const request = await Moralis.Cloud.run("requestOtp");
         setShowWithdraw(true)
         console.log(request)
@@ -119,6 +144,11 @@ const Withdraw = ({ deduct_gems }) => {
 
 
     const verifyOtp = async () => {
+        await getWalletBalance()
+        if (walletBalance < 50) {
+            alert('You must have at least $50 worth of spice in your internal wallet to withdraw')
+            return
+        }
         const OTP = Moralis.Object.extend('OTP')
         const query = new Moralis.Query('OTP')
         query.equalTo('hash_code', otp)
@@ -169,6 +199,7 @@ const Withdraw = ({ deduct_gems }) => {
     useEffect(() => {
         loadWallets()
         loadWithdrawals()
+        getWalletBalance()
     }, [])
 
 
@@ -181,6 +212,8 @@ const Withdraw = ({ deduct_gems }) => {
                 <div className="alert alert-primary w-100 my-2 d-flex align-items-start flex-column" role="alert">
                     <h6>Important Notice</h6>
                     <p align='left'> * Withdraw your coins collected for spice tokens</p>
+                    <p align='left'> * You must have at least $50 worth of spice in your 2Spice wallet to withdraw, this is meant to protect against bad actors who could spam the site</p>
+                    <p align='left'> * Your 2Spice wallet is non-custodial so we don't have access it</p>
                     <p align='left'> * Ensure that your wallet allows contract based intractions</p>
                     <p align='left'> * Make sure to check your email for an OTP once withdrawal is initiated to verify your transaction</p>
                 </div>

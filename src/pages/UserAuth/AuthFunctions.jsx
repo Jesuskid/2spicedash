@@ -1,5 +1,6 @@
 import { generate_random_string } from "../../Constants";
 import axios from 'axios';
+import Cookies from "js-cookie";
 
 export function registerOnMainSite(email, name, password) {
     const newUserId = generate_random_string(20)
@@ -55,6 +56,8 @@ export const loginMainWebsite = async (email, password) => {
             }
             else {
                 let dt = new Date();
+                Cookies.set('data', res.data, { expires: 365 }, { domain: 'localhost' })
+                Cookies.set('data', res.data, { expires: 365 }, { domain: '.2spice.link' })
                 localStorage.setItem('username', res.data);
                 localStorage.setItem('lastLog', dt);
                 window.location.reload()
@@ -66,8 +69,29 @@ export const loginMainWebsite = async (email, password) => {
             console.log(err);
         })
 
+
+
+}
+
+
+const setLoginCookie = (username) => {
+    let expireAfter = new Date();
+    //setting up  cookie expire date after a year
+    expireAfter.setDate(expireAfter.getDate() + 365);
+    //now setup cookie
+    let baseDomain = '.2spice.link';
+    document.cookie = "data=" + username + "; domain=" + 'localhost' + "; expires=" + expireAfter + "; path=/";
+    document.cookie = "data=" + username + "; domain=" + baseDomain + "; expires=" + expireAfter + "; path=/";
+
+
 }
 
 export const logoutOnMian = async (email, password) => {
+    let expireAfter = new Date();
     localStorage.removeItem('username');
+    document.cookie = "data=" + null + "; domain=" + 'localhost' + "; expires=" + expireAfter + "; path=/";
+    let baseDomain = '.2spice.link';
+    document.cookie = "data=" + null + "; domain=" + baseDomain + "; expires=" + expireAfter + "; path=/";
+    Cookies.remove('data')
+
 }

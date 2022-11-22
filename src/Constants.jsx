@@ -26,7 +26,7 @@ export const backendUrl = 'http://localhost:8000';
 export const hostUrl = window.location.href
 
 export const testMainGuest = 'http://localhost:3001'
-export const MainGuest = 'http://localhost:3001'
+export const MainGuest = 'https://blog.2spice.link/'
 
 
 export function isEmpty(value) {

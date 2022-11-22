@@ -9,7 +9,7 @@ const Logout = () => {
         if (window.confirm('Are you sure you want to logout')) {
             logoutOnMian()
             await Moralis.User.logOut()
-            window.location.reload()
+            window.location.assign(window.location.origin)
         }
 
     }

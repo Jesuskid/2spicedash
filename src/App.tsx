@@ -6,7 +6,7 @@ import FreeSpice from './pages/FreeSpice';
 import Desposit from './pages/Desposit/Desposit';
 import Roll from './pages/Spiceroll/Roll';
 import Spin from './pages/Spin/Spin';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useMoralis, useMoralisQuery } from 'react-moralis';
 import Auth from './pages/UserAuth/Auth';
 import { GemProvider } from './GemContext';
@@ -24,27 +24,32 @@ import { GemContext } from './GemContext';
 import Verify from './pages/UserAuth/Verify';
 import ResetPassword from './pages/UserAuth/ResetPassword';
 import Logout from './pages/UserAuth/Logout';
-import { hostUrl } from './Constants';
+import { hostUrl, testMainGuest } from './Constants';
 import Redirects from './pages/UserAuth/Redirects';
 import { MainGuest } from './Constants';
 import Landing from './myComponents/Landing';
 import { Router } from 'react-bootstrap-icons';
-var createHost = require('cross-domain-storage/host');
+import VerifyRequest from './pages/UserAuth/VerifyRequest';
+// var createHost = require('cross-domain-storage/host');
 
-var storageHost = createHost([
-  {
-    origin: hostUrl,
-    allowedMethods: ['get', 'set', 'remove'],
-  },
-  {
-    origin: MainGuest,
-    allowedMethods: ['get'],
-  },
-]);
+// var storageHost = createHost([
+//   {
+//     origin: hostUrl,
+//     allowedMethods: ['get', 'set', 'remove'],
+//   },
+//   {
+//     origin: 'https://blog.2spice.link',
+//     allowedMethods: ['get'],
+//   },
+//   {
+//     origin: testMainGuest,
+//     allowedMethods: ['get'],
+//   },
+// ]);
 
 function App() {
   const { user, authenticate, isAuthenticated, Moralis } = useMoralis()
-  const [isVerifeid, setIsVerified] = useState(false)
+  const [isVerifeid, setIsVerified] = useState(null)
 
   const { state, update } = useContext(GemContext)
   interface gemGems {
@@ -131,21 +136,36 @@ function App() {
   const gemFunctions = useState([gam])
 
   const checkIsVerifeid = async () => {
+    await Moralis.User.current()?.fetch()
+
     try {
       const User = Moralis.Object.extend('_User')
       const query = new Moralis.Query(User)
+      query.equalTo('email', user?.get('email'))
       const myDetails = await query.first()
+
       const isVer = myDetails?.get('emailVerified')
       setIsVerified(isVer)
-      console.log(isVer)
     } catch (err) {
-
+      // alert(isAuthenticated)
     }
   }
 
+
   useEffect(() => {
-    checkIsVerifeid()
-  }, [])
+    // alert('as' + user?.get("emailVerified"))
+    if (user) {
+      checkIsVerifeid()
+    }
+  }, [, user])
+
+
+  useEffect(() => {
+    if (user) {
+      checkIsVerifeid()
+      // alert(isVerifeid)
+    }
+  }, [setIsVerified])
 
 
 
@@ -158,14 +178,14 @@ function App() {
 
           {isAuthenticated == true && user ?
             <>
-              {isVerifeid == true || user.get("emailVerified") == true ?
+              {isVerifeid === true || user?.get("emailVerified") == true ?
                 <>
+
                   <Header />
                   <Routes>
                     <Route path="/" element={<Dashboard deduct={deduct_gems} />}>
                       <Route path="/" element={<Overview />}></Route>
                       <Route path="overview" element={<Overview />}></Route>
-
                       <Route path="deposit" element={<Deposit />}></Route>
                       <Route path="link" element={<Link />}></Route>
                       <Route path="withdraw" element={<Withdraw deduct_gems={deduct_gems} />}></Route>
@@ -173,15 +193,17 @@ function App() {
                       <Route path="wallets" element={<Wallets />}></Route>
                       <Route path="wallets-group" element={<WalletGroup />}></Route>
                     </Route>
-                    <Route path="/logout" element={<Logout />} ></Route>
-                    <Route path="/redirect" element={<Redirects />} ></Route>
-
                   </Routes>
 
                   <Routes>
+                    <Route path="/logout" element={<Logout />} ></Route>
+                    <Route path="/redirect" element={<Redirects />} ></Route>
                     <Route path="/swap" element={<Swap />} ></Route>
                   </Routes>
 
+                  <Routes>
+                    <Route path="/auth" element={<Navigate to='/' replace />} />
+                  </Routes>
 
 
                   <div className='contain py-0' style={{ height: '100%' }}>
@@ -196,7 +218,6 @@ function App() {
                           <Route path="roll" element={<Roll send_gems={send_gems} deduct_gems={deduct_gems} loadGems={loadGems} />}></Route>
                           <Route path="spin" element={<Spin send_gems={send_gems} deduct_gems={deduct_gems} loadGems={loadGems} />} ></Route>
                         </Route>
-
                       </Routes>
 
 
@@ -205,7 +226,12 @@ function App() {
 
                   </div>
                 </>
-                : <Verify />
+                : <div className='verify-container'>
+                  <Verify />
+                  <Routes>
+                    <Route path='/verify/:uid' element={<VerifyRequest />}></Route>
+                  </Routes>
+                </div>
               }
             </>
 
@@ -214,9 +240,11 @@ function App() {
               <Routes>
                 <Route path='/' element={<Landing />} />
                 <Route path='/auth' element={<Auth />}></Route>
+
               </Routes>
             </>
           }
+
         </BrowserRouter>
 
       </GemProvider>

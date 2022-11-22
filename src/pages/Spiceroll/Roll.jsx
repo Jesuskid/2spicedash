@@ -200,9 +200,13 @@ const Roll = ({ send_gems, deduct_gems, loadGems }) => {
                 count += 1
                 if (count >= 50) {
 
+
+
                     clearInterval(interval)
                     num = `${r1}${r2}${r3}${r4}`
                     let wining = parseInt(num)
+
+                    var currentGems = state.gems
 
                     const hasWon = check(wining, choicee)
                     console.log(hasWon)
@@ -215,17 +219,18 @@ const Roll = ({ send_gems, deduct_gems, loadGems }) => {
                     if (jackpot == true && autoJackpot['cost'] > 0) {
                         //transfer jackpot gems
                         send_gems(jackpotWin)
-                        update({ gems: state.gems + jackpotWin })
+                        await update({ gems: state.gems + jackpotWin })
                     } else if (jackpot == false && autoJackpot['cost'] > 0) {
                         deduct_gems(jackpotCost)
-                        update({ gems: state.gems - jackpotCost })
+                        await update({ gems: state.gems - jackpotCost })
                     }
 
                     if (hasWon == true) {
                         //transfer gems
                         let amt_won = baseBet * 0.5
-                        send_gems(amt_won).then(() => {
-                            update({ gems: (state.gems + amt_won) })
+                        send_gems(amt_won).then(async () => {
+
+                            update({ gems: currentGems + amt_won })
                             saveGame(amt_won, amt_won, choicee, 0, jackpotWin, wining)
                             setIsRolling(false)
                             setAutoProfits((profit) => {
@@ -237,8 +242,8 @@ const Roll = ({ send_gems, deduct_gems, loadGems }) => {
                         })
                     } else if (hasWon == false) {
                         //deduct gems
-                        deduct_gems(baseBet).then(() => {
-                            update({ gems: (state.gems - baseBet) })
+                        deduct_gems(baseBet).then(async () => {
+                            await update({ gems: currentGems - baseBet })
                             saveGame(0, 0, choicee, baseBet, jackpotWin, wining)
                             setIsRolling(false)
                             setAutoLosses((loss) => {
@@ -347,7 +352,6 @@ const Roll = ({ send_gems, deduct_gems, loadGems }) => {
                     prevChoice = chosenVar
                     numberORolls += 1
                     max_bet += baseBet
-                    let rollVal = await autoRoll(chosenVar)
 
 
 
@@ -371,13 +375,16 @@ const Roll = ({ send_gems, deduct_gems, loadGems }) => {
                         setIsInAutoMode(false)
                     }
 
+                    await autoRoll(chosenVar)
+                    await loadGems()
+
                 }
 
             }, 3000)
         } else {
             alert('Your bet is out of range')
         }
-        await loadGems()
+
     }
 
     const autoBetChoice = (prevChoice) => {
@@ -429,7 +436,7 @@ const Roll = ({ send_gems, deduct_gems, loadGems }) => {
 
 
     const deductPlayGems = () => {
-        //deduct gems from moralis account database to play game
+
     }
 
 
@@ -538,7 +545,7 @@ const Roll = ({ send_gems, deduct_gems, loadGems }) => {
                             <button onClick={() => play_roll('LO')} className='yellow-btn'>BET LO</button>
                         </div>}
                         {manWin == true && hasPlayed == true ? <div className='result text-black my-2'>
-                            {`You BET ${recentBet} so you win ${jackpot ? (betAmount * 0.5) + jackpotChoice['prize'] : (betAmount * 0.5)} GEMS!`}
+                            {`You BET ${recentBet} so you win ${jackpot ? (betAmount * 1.5) + jackpotChoice['prize'] : (betAmount * 0.5)} GEMS!`}
                         </div> : ''
                         }
                         {manWin == false && hasPlayed == true ? <div className='result-lost text-black my-2'>
@@ -666,7 +673,7 @@ const Roll = ({ send_gems, deduct_gems, loadGems }) => {
                             </div>
                             {
                                 betStatus === true && (<div className='result text-black my-2'>
-                                    Won {Math.round((baseBet * 0.5) * 100) / 100} spice
+                                    Won {Math.round((baseBet * 1.5) * 100) / 100} spice
                                 </div>)
                             }
                             {

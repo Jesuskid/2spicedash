@@ -45,6 +45,29 @@
   background: rgb(224, 224, 224);
 }
 
+.verify-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.verify-message,
+.verifying {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgb(255, 255, 255);
+}
+
+.verifying {
+  z-index: 10;
+  width: 100%;
+  height: 100vh;
+}
+
+
 @media only screen and (max-width: 768px) {
   .contain {
     padding: 0px 20px !important;

@@ -72,7 +72,11 @@ const Auth = () => {
                 registerOnMainSite(email, username, password);
             }).then(async () => {
                 console.log('success')
-                await Moralis.User.requestEmailVerification(email).then(() => {
+                // await Moralis.User.requestEmailVerification(email).then(() => {
+                //     setLoading(false)
+                //     window.location.reload()
+                // })
+                await Moralis.Cloud.run('requestEmailVerify').then(() => {
                     setLoading(false)
                     window.location.reload()
                 })
@@ -161,8 +165,13 @@ const Auth = () => {
     }
     const isLogin = useLocation()
 
+
+
+
     useEffect(() => {
-        setLoginPage(isLogin.state)
+        if (isLogin.state != null) {
+            setLoginPage(isLogin.state)
+        }
     }, [])
 
 
@@ -194,7 +203,7 @@ const Auth = () => {
                             <div className=' w-100' >
 
 
-                                {loginPage && !resetPage && (<form className='w-100 px-3'>
+                                {loginPage == true && !resetPage && (<form className='w-100 px-3'>
                                     <h3>Login to your Account</h3>
                                     <input placeholder='Email' className='form-control my-3' type='text' value={email} onChange={(e) => setEmail(e.target.value)} />
                                     <input placeholder='Password' className='form-control my-3' type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
@@ -210,7 +219,7 @@ const Auth = () => {
                                 </form>)
                                 }
                                 {
-                                    !loginPage && !resetPage && (
+                                    loginPage == false && !resetPage && (
                                         <form className='p-3'>
                                             <h3>Sign Up</h3>
                                             <input className='form-control my-3' type='text' placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} />
@@ -231,7 +240,7 @@ const Auth = () => {
                                     resetPage && (
                                         <>
                                             <ResetPassword />
-                                            <a className='my-2 a' onClick={() => { setLoginPage(true); setResetPage(false) }}>Log in</a>
+                                            <a className='my-2 a' onClick={() => { setLoginPage(false); setResetPage(false) }}>Log in</a>
                                         </>
                                     )
                                 }

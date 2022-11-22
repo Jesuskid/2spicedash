@@ -29,7 +29,7 @@ const Header = () => {
         if (window.confirm('Are you sure you want to logout')) {
             logoutOnMian()
             await Moralis.User.logOut()
-            window.location.reload()
+            window.location.assign(window.location.origin)
         }
     }
 
@@ -73,6 +73,37 @@ const Header = () => {
                                 <NavDropdown.Item onClick={() => window.open("https://art.2spice.link", "_blank")}>
                                     <Nav.Link className='text-black'>Art</Nav.Link>
                                 </NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => window.open("https://earn.2spice.link", "_blank")}>
+                                    <Nav.Link className='text-black'>Offer well and task</Nav.Link>
+                                </NavDropdown.Item>
+
+                            </NavDropdown>
+
+
+                            <NavDropdown className='black-bg border-side' title="More" id="basic-nav-dropdown">
+                                <NavDropdown.Item onClick={() => window.open("https://forum.2spice.link/", "_blank")}>
+                                    <Nav.Link className='text-black'>Forum</Nav.Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => window.open("https://liftme.2spice.link/", "_blank")}>
+                                    <Nav.Link className='text-black'>2Spice Fundraising</Nav.Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => window.open("https://shopdigital.2spice.link/", "_blank")}>
+                                    <Nav.Link className='text-black'>Shop Digital</Nav.Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => window.open("https://2spice.link/whitepaper/", "_blank")}>
+                                    <Nav.Link className='text-black'>White Paper</Nav.Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => window.open("https://contractwolf.io/projects/2spice", "_blank")}>
+                                    <Nav.Link className='text-black'>Audit</Nav.Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => window.open("https://2spice.link/about/index.html", "_blank")}>
+                                    <Nav.Link className='text-black'>About Us</Nav.Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => window.open("https://2spice.link/roadmap/", "_blank")}>
+                                    <Nav.Link className='text-black'>Roadmap</Nav.Link>
+                                </NavDropdown.Item>
+
+
 
                             </NavDropdown>
 

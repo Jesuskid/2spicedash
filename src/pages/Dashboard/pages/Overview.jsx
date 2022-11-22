@@ -218,7 +218,7 @@ const Overview = () => {
                                 </div>
                                 <div className='d-flex flex-column align-items-start'>
                                     <small align='left'>COINS SPENT(24H)</small>
-                                    <h5 className='text-grey'>{Math.abs(Math.round(gem['lost'] * 1000000) / 1000000)}</h5>
+                                    <h5 className='text-grey'>{gem['lost'] && Math.abs(Math.round(gem['lost'] * 1000000) / 1000000)}</h5>
                                 </div>
                             </Col>
 
@@ -228,7 +228,7 @@ const Overview = () => {
                                 </div>
                                 <div className='d-flex flex-column align-items-start'>
                                     <small align='left' className='d-flex align-items-start'>COINS COLLECTED(24H)</small>
-                                    <h5>{Math.round(gem['earned'] * 1000000) / 1000000}</h5>
+                                    <h5> {gem['earned'] && Math.round(gem['earned'] * 1000000) / 1000000}</h5>
                                 </div>
                             </Col>
                             <Col className='d-flex  my-2 align-items-center'>
@@ -237,7 +237,7 @@ const Overview = () => {
                                 </div>
                                 <div className='d-flex flex-column align-items-start'>
                                     <small align='left' style={{ textAlign: 'left', direction: 'ltr' }} className=''>PAYOUTS RECEIVED</small>
-                                    <h5>{(Math.round(payouts * 1000000) / 1000000).toString()}</h5>
+                                    <h5>{payouts && (Math.round(payouts * 1000000) / 1000000).toString()}</h5>
                                 </div>
                             </Col>
                         </Row>

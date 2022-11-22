@@ -60,6 +60,7 @@ const Deposit = () => {
 
 
     const depositSpice = async () => {
+        await auth()
 
         setLoading(true)
         let amount = ethers.utils.parseUnits(depositAmt, "ether")
@@ -132,6 +133,7 @@ const Deposit = () => {
         let amount = ethers.utils.parseUnits(depositAmt, "ether")
         let approval = ethers.utils.parseUnits('10000000', "ether")
 
+
         let email = user.get('email')
 
         console.log('started')
@@ -152,6 +154,17 @@ const Deposit = () => {
 
             let allowance = contract.allowance(user.get('gen_account'), SPICE_CONTRACT_ADDRESS)
 
+            let balance = await contract.balanceOf(user.get('gen_account'))
+            let data = ethers.utils.formatEther(balance)
+            console.log(balance)
+            if (balance < amount) {
+                alert(`Error: deposit amount of ${depositAmt} exceeds balance of ${ethers.utils.formatEther(balance)}`)
+                setLoading(false)
+                setShowDepositInternal(false)
+                return
+
+            }
+
             if (allowance < amount) {
                 const approve = await contract.approve(REWARD_CONTRACT_ADDRESS, ethers.constants.MaxUint256).then((res) => {
                     console.dir(res)
@@ -166,7 +179,7 @@ const Deposit = () => {
                 setLoading(false)
             }).catch((err) => {
                 console.log(err.message.slice(0, 41))
-                alert(`Deposit failed ${err.message.slice(0, 41)}`)
+                alert(`Error: Deposit failed ${err.message.slice(0, 41)}`)
                 setLoading(false)
             })
             setShowDepositInternal(false)
@@ -183,13 +196,16 @@ const Deposit = () => {
 
     const auth = async () => {
         if (isWeb3Enabled) {
+            setShowDeposit(true)
         } else {
-            if (Moralis.isMetaMaskInstalled === true) {
-                alert('Metamask is installed')
+            const isInstalled = await Moralis.isMetaMaskInstalled()
+            if (isInstalled) {
+                console.log(isInstalled)
                 await enableWeb3()
+                setShowDeposit(true)
             } else {
                 await Moralis.enableWeb3({ provider: "walletconnect" });
-                alert('Wallet connect')
+                setShowDeposit(true)
             }
         }
     }
@@ -206,7 +222,7 @@ const Deposit = () => {
                         <p className='py-2 px-3 d-flex justify-content-start align-items-start border-btm'>SPICE</p>
                         <div className='px-3'>
                             <img width='150' src={metamaskLogo} />
-                            <Button onClick={auth} className='w-100'>Deposit with Metamask</Button>
+                            <Button onClick={() => { auth() }} className='w-100'>Deposit with Metamask</Button>
                         </div>
                     </div>
                 </Col>
