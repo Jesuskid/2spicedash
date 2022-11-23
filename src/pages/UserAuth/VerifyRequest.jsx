@@ -23,7 +23,7 @@ const VerifyRequest = () => {
 
 
         if (result.get('expired') == false && +exdate > +nowUTC) {
-            const params = { 'linkUrl': link }
+            const params = { 'linkUrl': link, 'env': 'live' }
             await Moralis.Cloud.run('verifyEmailV2', params).then(async () => {
                 await Moralis.User.current()?.fetch()
                 alert('email successfully verified')
@@ -51,7 +51,6 @@ const VerifyRequest = () => {
 
         if (result.get('expired') == false && +exdate < +nowUTC) {
             await Moralis.Cloud.run('requestEmailVerify').then(() => {
-                console.log('verified')
             })
         } else {
             alert('Please check your email/spam folder for a verification link')

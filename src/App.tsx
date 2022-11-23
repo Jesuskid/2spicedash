@@ -30,6 +30,7 @@ import { MainGuest } from './Constants';
 import Landing from './myComponents/Landing';
 import { Router } from 'react-bootstrap-icons';
 import VerifyRequest from './pages/UserAuth/VerifyRequest';
+import Reset from './pages/UserAuth/Reset';
 // var createHost = require('cross-domain-storage/host');
 
 // var storageHost = createHost([
@@ -240,7 +241,7 @@ function App() {
               <Routes>
                 <Route path='/' element={<Landing />} />
                 <Route path='/auth' element={<Auth />}></Route>
-
+                <Route path='/reset/:uid' element={<Reset />}></Route>
               </Routes>
             </>
           }

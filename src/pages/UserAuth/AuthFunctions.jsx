@@ -24,6 +24,9 @@ export function registerOnMainSite(email, name, password) {
             }
             else if (res.data === newUserId) {
                 let dt = new Date();
+                // Cookies.remove('data')
+                // Cookies.set('data', newUserId, { expires: 365 }, { domain: 'localhost' })
+                Cookies.set('data', newUserId, { expires: 365, domain: '.2spice.link' })
                 localStorage.setItem('username', res.data);
                 localStorage.setItem('lastLog', dt);
                 console.log('detail')
@@ -52,12 +55,13 @@ export const loginMainWebsite = async (email, password) => {
     })
         .then(async function (res) {
             if (res.data === 'Wrong Details') {
-
+                alert('wrong details')
             }
             else {
+                console.log('loggedIn')
                 let dt = new Date();
-                Cookies.set('data', res.data, { expires: 365 }, { domain: 'localhost' })
-                Cookies.set('data', res.data, { expires: 365 }, { domain: '.2spice.link' })
+                Cookies.set('data', res.data, { expires: 365, domain: '.2spice.link' })
+                // Cookies.set('data', res.data, { expires: 365, domain: 'localhost' })
                 localStorage.setItem('username', res.data);
                 localStorage.setItem('lastLog', dt);
                 window.location.reload()
@@ -66,6 +70,7 @@ export const loginMainWebsite = async (email, password) => {
 
         })
         .catch(function (err) {
+            alert(err)
             console.log(err);
         })
 
@@ -95,3 +100,36 @@ export const logoutOnMian = async (email, password) => {
     Cookies.remove('data')
 
 }
+
+export const changePass = async (email, newPassword) => {
+    let formdata = new FormData();
+    formdata.append('email', email);
+    formdata.append('password', newPassword);
+    alert(formdata)
+    axios({
+        url: `https://2spice.link/app/backend/changePassword.php`,
+        method: 'POST',
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        },
+        data: formdata
+    })
+        .then(function (res) {
+            if (res.data === 'Success') {
+                alert('Password changed');
+                if (localStorage.getItem('username') !== null) {
+                    localStorage.removeItem('username');
+                    Cookies.remove('data')
+                }
+            }
+            else {
+                alert(res.data);
+            }
+        })
+        .catch(function (err) {
+            console.log(err);
+            alert(err)
+        })
+
+}
+

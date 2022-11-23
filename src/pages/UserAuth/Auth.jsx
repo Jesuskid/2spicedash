@@ -11,8 +11,11 @@ import enc from 'crypto-js/enc-utf8'
 import ResetPassword from './ResetPassword'
 import { registerOnMainSite, loginMainWebsite } from './AuthFunctions'
 
+
 const Auth = () => {
 
+
+    const location = useLocation()
 
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
@@ -103,13 +106,9 @@ const Auth = () => {
         try {
             await Moralis.User.logIn(email, password).then(async () => {
                 const res = await loginMainWebsite(email, password).then(() => {
-
+                    // window.location.reload()
                 })
-                //
-                // alert(res)
-                // if (res) {
-                //     window.location.reload()
-                // }
+
 
             }).catch((err) => {
                 console.log(err)
@@ -163,14 +162,14 @@ const Auth = () => {
         }
 
     }
-    const isLogin = useLocation()
-
-
 
 
     useEffect(() => {
-        if (isLogin.state != null) {
-            setLoginPage(isLogin.state)
+
+        if (location.state != null) {
+            if (location.state.login == true || location.state.login == false) {
+                setLoginPage(location.state.login)
+            }
         }
     }, [])
 
@@ -240,7 +239,7 @@ const Auth = () => {
                                     resetPage && (
                                         <>
                                             <ResetPassword />
-                                            <a className='my-2 a' onClick={() => { setLoginPage(false); setResetPage(false) }}>Log in</a>
+                                            <a className='my-2 a' onClick={() => { setLoginPage(true); setResetPage(false) }}>Log in</a>
                                         </>
                                     )
                                 }

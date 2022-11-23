@@ -39,8 +39,8 @@ function Landing() {
                             token from crashing even if whales dump it. This places it among the leading investment
                             windows in the crypto world.
                         </p>
-                        <Link to="/auth" state={true} className={styles.signup}><span>Sign Up</span></Link>
-                        <Link to="/auth" state={false} className={styles.signin}><span>Sign In</span></Link>
+                        <Link to="/auth" state={{ 'login': false }} className={styles.signup}><span>Sign Up</span></Link>
+                        <Link to="/auth" state={{ 'login': true }} className={styles.signin}><span>Sign In</span></Link>
                         <div className={styles.socialCont}>
                             <Link to="#" id={styles.discord}>
                                 <svg viewBox="0 0 598 455" fill="none"

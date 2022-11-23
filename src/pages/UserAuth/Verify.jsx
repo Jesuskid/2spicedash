@@ -37,7 +37,7 @@ const Verify = () => {
                 <small>You're just one step away!!!</small>
                 <p >Email verification link was sent to <span style={{ color: 'blue' }}>{user.get('email')}</span></p>
                 {user?.get('emailVerified')}
-                <Link to='/auth' state={true}><a className='py-2' onClick={logout1} href='#'>Wrong email</a></Link>
+                <Link to='/auth' state={{ 'login': false }}><a className='py-2' onClick={logout1} href='#'>Wrong email</a></Link>
                 <br />
                 {/* <Button onClick={req}>REQUEST</Button> */}
             </div>
