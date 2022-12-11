@@ -1,239 +1,262 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 
-.bodyDiv{
-    float: left;
-    width: 100%;
-    height: 100vh;
+.bodyDiv {
+  float: left;
+  width: 100%;
+  height: 100vh;
 }
-.lead{
-    float: left;
-    width: 100%;
-    height: 100%;
-    padding: 10vh 2.5vw;
-    background-image: url(../assets/stars.svg), linear-gradient(135deg, rgb(62,80,255) 10%, rgb(206,59,243) 50%, rgb(255,171,88) 95%);
-    background-image: url(../assets/stars.svg), -moz-linear-gradient( 135deg, rgb(62,80,255) 10%, rgb(206,59,243) 50%, rgb(255,171,88) 95%);
-    background-image: url(../assets/stars.svg), -webkit-linear-gradient( 135deg, rgb(62,80,255) 10%, rgb(206,59,243) 50%, rgb(255,171,88) 95%);
-    background-image: url(../assets/stars.svg), -ms-linear-gradient( 135deg, rgb(62,80,255) 10%, rgb(206,59,243) 50%, rgb(255,171,88) 95%);
-   
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: bottom;
+
+.lead {
+  float: left;
+  width: 100%;
+  height: 100%;
+  padding: 10vh 2.5vw;
+  background-image: url(../assets/stars.svg), linear-gradient(135deg, rgb(62, 80, 255) 10%, rgb(206, 59, 243) 50%, rgb(255, 171, 88) 95%);
+  background-image: url(../assets/stars.svg), -moz-linear-gradient(135deg, rgb(62, 80, 255) 10%, rgb(206, 59, 243) 50%, rgb(255, 171, 88) 95%);
+  background-image: url(../assets/stars.svg), -webkit-linear-gradient(135deg, rgb(62, 80, 255) 10%, rgb(206, 59, 243) 50%, rgb(255, 171, 88) 95%);
+  background-image: url(../assets/stars.svg), -ms-linear-gradient(135deg, rgb(62, 80, 255) 10%, rgb(206, 59, 243) 50%, rgb(255, 171, 88) 95%);
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
-.leadCont{
-    float: left;
-    width: 48%;
-    height: 100%;
+
+.leadCont {
+  float: left;
+  width: 48%;
+  height: 100%;
 }
-.leadCont h1{
-    float: left;
-    margin-top: 15vh;
-    width: 100%;
-    text-transform: uppercase;
-    color: rgb(255,255,255);
-    letter-spacing: 0.06vw;
-    font-family: 'Lato', sans-serif;
+
+.leadCont h1 {
+  float: left;
+  margin-top: 15vh;
+  width: 100%;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  letter-spacing: 0.06vw;
+  font-family: 'Lato', sans-serif;
 }
-.leadCont p{
-    float: left;
-    width: 100%;
-    margin-top: 6%;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.4vw;
-    font-weight: 400;
-    letter-spacing: 0.06vw;
-    line-height: 2.4vw;
-    color: rgb(255,255,255);
+
+.leadCont p {
+  float: left;
+  width: 100%;
+  margin-top: 6%;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4vw;
+  font-weight: 400;
+  letter-spacing: 0.06vw;
+  line-height: 2.4vw;
+  color: rgb(255, 255, 255);
 }
-.signup{
-    float: left;
-    margin-top: 6vh;
-    margin-right: 2vw;
-    width: 32%;
-    border: none;
-    outline: none;
-    padding: 0.5vw 1vw;
-    font-size: 1.4vw;
-    font-weight: 600;
-    letter-spacing: 0.06vw;
-    background-color: transparent;
-    background-image: url(../assets/button_fill.svg);
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-    text-align: center;
+
+.signup {
+  float: left;
+  margin-top: 6vh;
+  margin-right: 2vw;
+  width: 32%;
+  border: none;
+  outline: none;
+  padding: 0.5vw 1vw;
+  font-size: 1.4vw;
+  font-weight: 600;
+  letter-spacing: 0.06vw;
+  background-color: transparent;
+  background-image: url(../assets/button_fill.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  text-align: center;
 }
-.signup:hover{
-    box-shadow: 2px 2px 10px rgb(0,0,0,0.2);
+
+.signup:hover {
+  box-shadow: 2px 2px 10px rgb(0, 0, 0, 0.2);
 }
-.signin{
-    float: left;
-    margin-top: 6vh;
-    margin-right: 2vw;
-    width: 32%;
-    border: none;
-    outline: none;
-    padding: 0.5vw 1vw;
-    font-size: 1.4vw;
-    font-weight: 600;
-    letter-spacing: 0.06vw;
-    background-color: transparent;
-    background-image: url(../assets/button_border.svg);
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    text-decoration: none;
-    text-align: center;
+
+.signin {
+  float: left;
+  margin-top: 6vh;
+  margin-right: 2vw;
+  width: 32%;
+  border: none;
+  outline: none;
+  padding: 0.5vw 1vw;
+  font-size: 1.4vw;
+  font-weight: 600;
+  letter-spacing: 0.06vw;
+  background-color: transparent;
+  background-image: url(../assets/button_border.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-decoration: none;
+  text-align: center;
 }
-.signin span{
-    background-image: linear-gradient(to right, #00ccff , #001aff) ;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+
+.signin span {
+  background-image: linear-gradient(to right, #00ccff, #001aff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.signin:hover{
-    box-shadow: 2px 2px 10px rgb(0,0,0,0.2);
-    background-image: url(../assets/button_fill.svg);
+
+.signin:hover {
+  box-shadow: 2px 2px 10px rgb(0, 0, 0, 0.2);
+  background-image: url(../assets/button_fill.svg);
 }
-.signin:hover span{
-    background-image: linear-gradient(to right, #000000 , #000000) ;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+
+.signin:hover span {
+  background-image: linear-gradient(to right, #000000, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.socialCont{
-    float: left;
-    margin-top: 4vh;
-    margin-left: 10%;
-    width: 48%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+.socialCont {
+  float: left;
+  margin-top: 4vh;
+  margin-left: 10%;
+  width: 48%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.socialCont a{
-    margin: 0% auto;
-    display: flex;
-    padding: 1.5vh;
-    width: 8vh;
-    height: 8vh;
-    border: 2px solid rgba(0, 0, 0, 0.1);
-    border-radius: 8vh;
+
+.socialCont a {
+  margin: 0% auto;
+  display: flex;
+  padding: 1.5vh;
+  width: 8vh;
+  height: 8vh;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8vh;
 }
-.socialCont a:hover{
-    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.486);
+
+.socialCont a:hover {
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.486);
 }
-.leadmedia{
-    float: left;
-    width: 52%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    position: relative;
-    overflow: hidden;
+
+.leadmedia {
+  float: left;
+  width: 52%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
 }
-.leadmedia div{
-    position: absolute;
-    left: 10%;
-    float: left;
-    margin-top: 14%;
-    width: 95%;
-    height: 90%;
-    background-image: url(../assets/2spiceimg.png);
-    background-size: contain;
-    background-position: right;
-    background-repeat: no-repeat;
-    transition: 2s;
-    transform-style: preserve-3d;
-    transition-timing-function: ease;
+
+.leadmedia div {
+  position: absolute;
+  left: 10%;
+  float: left;
+  margin-top: 14%;
+  width: 95%;
+  height: 90%;
+  background-image: url(../assets/2spiceimg.png);
+  background-size: contain;
+  background-position: right;
+  background-repeat: no-repeat;
+  transition: 2s;
+  transform-style: preserve-3d;
+  transition-timing-function: ease;
 }
-.leadmedia div:hover{
-    
-    transform: rotateZ(3deg)
+
+.leadmedia div:hover {
+
+  transform: rotateZ(3deg)
 }
-.punchDiv{
-    float: left;
-    width: 100%;
-    height: 90vh;
-    background-image: url(../assets/punchBgGrad.png);
-    background-position: 0% 80%;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    padding: 0vh 2.5vw;
-    
+
+.punchDiv {
+  float: left;
+  width: 100%;
+  height: 90vh;
+  background-image: url(../assets/punchBgGrad.png);
+  background-position: 0% 80%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  padding: 0vh 2.5vw;
+
 }
-.punchDiv p{
-    float: left;
-    width: 100%;
-    padding: 3vw 20vw;
-    text-align: center;
-    font-size: 1.5vw;
-    font-weight: 600;
-    letter-spacing: 0.08vw;
-    line-height: 1.8;
-    color: rgb(41, 41, 41);
+
+.punchDiv p {
+  float: left;
+  width: 100%;
+  padding: 3vw 20vw;
+  text-align: center;
+  font-size: 1.5vw;
+  font-weight: 600;
+  letter-spacing: 0.08vw;
+  line-height: 1.8;
+  color: rgb(41, 41, 41);
 }
-.anime{
-    float: left;
-    width: 94vw;
-    height: 28vw;
-    background-image: url(../assets/surounding.svg);
-    background-size: contain;
-    background-position: bottom;
-    background-repeat: no-repeat;
-    position: relative;
+
+.anime {
+  float: left;
+  width: 94vw;
+  height: 28vw;
+  background-image: url(../assets/surounding.svg);
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  position: relative;
 }
-.circle{
-    position: absolute;
-    left: 34.5vw;
-    top: 1vw;
-    width: 17vw;
-    height: 17vw;
-    background-image: url(../assets/2spice_icon.svg), url(../assets/circle.svg);
-    background-size: 20%, contain;
-    background-position: center;
-    background-repeat: no-repeat;
+
+.circle {
+  position: absolute;
+  left: 34.5vw;
+  top: 1vw;
+  width: 17vw;
+  height: 17vw;
+  background-image: url(../assets/2spice_icon.svg), url(../assets/circle.svg);
+  background-size: 20%, contain;
+  background-position: center;
+  background-repeat: no-repeat;
 
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    .circle {
-      animation: App-logo-spin infinite 4s linear;
-    }
+  .circle {
+    animation: App-logo-spin infinite 4s linear;
   }
-  
-  
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-.service{
+.service {
   float: left;
   width: 100%;
   padding: 0vh 2.5vw;
   padding-bottom: 8vh;
   text-align: center;
 }
-.service h1{
+
+.service h1 {
   display: block;
   margin: 0% auto;
   width: fit-content;
   text-align: center;
   margin-top: 4vh;
   padding: 2.5vw;
-  background-image: linear-gradient(to right, #a200ff , #006cff) ;
+  background-image: linear-gradient(to right, #a200ff, #006cff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-transform: uppercase;
   letter-spacing: 0.06vw;
   font-family: 'Lato', sans-serif;
 }
-.serviceCont{
+
+.serviceCont {
   float: left;
   margin-top: 4vh;
   width: 100%;
@@ -241,7 +264,8 @@
   grid-template-columns: auto auto auto auto;
   grid-gap: 6vh;
 }
-.serviceHold{
+
+.serviceHold {
   width: 20vw;
   height: 70vh;
   padding: 1vw;
@@ -249,11 +273,13 @@
   box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
   transition: 0.6s;
 }
-.serviceHold:hover{
+
+.serviceHold:hover {
   transform: translateY(-2vh);
   box-shadow: 2px 2px 25px rgba(60, 167, 255, 0.6);
 }
-.serviceHold div{
+
+.serviceHold div {
   float: left;
   width: 100%;
   height: 15vh;
@@ -261,31 +287,40 @@
   background-position: center;
   background-repeat: no-repeat;
 }
-.blog{
+
+.blog {
   background-image: url(../assets/blog.svg);
 }
-.help{
+
+.help {
   background-image: url(../assets/hel.svg);
 }
-.promo{
+
+.promo {
   background-image: url(../assets/promotion.svg);
 }
-.money{
+
+.money {
   background-image: url(../assets/money.svg);
 }
-.cart{
+
+.cart {
   background-image: url(../assets/shop.svg);
 }
-.game{
+
+.game {
   background-image: url(../assets/game.svg);
 }
-.affiliate{
+
+.affiliate {
   background-image: url(../assets/affiliate.svg);
 }
-.swap{
+
+.swap {
   background-image: url(../assets/swap.svg);
 }
-.serviceHold h3{
+
+.serviceHold h3 {
   width: 100%;
   height: 12vh;
   line-height: 2vw;
@@ -293,14 +328,15 @@
   align-items: center;
   justify-content: center;
   padding: 0vh 1vw;
-  background-image: linear-gradient(to right, #00a8ff , #000cff) ;
+  background-image: linear-gradient(to right, #00a8ff, #000cff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-transform: uppercase;
   letter-spacing: 0.04vw;
   font-family: 'Lato', sans-serif;
 }
-.serviceHold p{
+
+.serviceHold p {
   width: 100%;
   font-size: 1.2vw;
   font-weight: 400;
@@ -312,239 +348,273 @@
 
 
 
-@media screen and (max-width: 1023px){
-  .bodyDiv{
+@media screen and (max-width: 1023px) {
+  .bodyDiv {
     float: left;
     width: 100%;
     height: 100vh;
   }
-  .lead{
-      float: left;
-      width: 100%;
-      height: 100%;
-      padding: 6vh 2.5vw;
-      padding-bottom: 2vh;
-      background-image: url(../assets/stars.svg), linear-gradient(135deg, rgb(62,80,255) 10%, rgb(206,59,243) 50%, rgb(255,171,88) 95%);
-      background-image: url(../assets/stars.svg), -moz-linear-gradient( 135deg, rgb(62,80,255) 10%, rgb(206,59,243) 50%, rgb(255,171,88) 95%);
-      background-image: url(../assets/stars.svg), -webkit-linear-gradient( 135deg, rgb(62,80,255) 10%, rgb(206,59,243) 50%, rgb(255,171,88) 95%);
-      background-image: url(../assets/stars.svg), -ms-linear-gradient( 135deg, rgb(62,80,255) 10%, rgb(206,59,243) 50%, rgb(255,171,88) 95%);
 
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: bottom;
-  }
-  .leadCont{
-      float: left;
-      width: 100%;
-      height: 50%;
-  }
-  .leadCont h1{
-      float: left;
-      margin-top: 3vh;
-      width: 100%;
-      text-transform: uppercase;
-      text-align: center;
-      color: rgb(255,255,255);
-      font-size: 6vw;
-      letter-spacing: 0.1vw;
-      font-family: 'Lato', sans-serif;
-  }
-  .leadCont p{
-      float: left;
-      width: 100%;
-      margin-top: 6%;
-      padding: 0% 2%;
-      font-family: 'Poppins', sans-serif;
-      font-size: 3.5vw;
-      font-weight: 400;
-      letter-spacing: 0.09vw;
-      line-height: 5vw;
-      text-align: center;
-      color: rgb(255,255,255);
-  }
-  .signup{
-      display: block;
-      margin: 0% auto;
-      margin-top: 3vh;
-      margin-left: 25%;
-      width: 50%;
-      border: none;
-      outline: none;
-      padding: 2vw 1vw;
-      font-size: 3.5vw;
-      font-weight: 600;
-      letter-spacing: 0.06vw;
-      background-color: transparent;
-      background-image: url(../assets/button_fill.svg);
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      color: rgb(0, 0, 0);
-      text-decoration: none;
-      text-align: center;
-  }
-  .signup:hover{
-      box-shadow: 2px 2px 10px rgb(0,0,0,0.2);
-  }
-  .signin{
-      display: block;
-      margin: 0% auto;
-      margin-top: 2vh;
-      margin-left: 25%;
-      width: 50%;
-      border: none;
-      outline: none;
-      padding: 2vw 1vw;
-      font-size: 3.5vw;
-      font-weight: 600;
-      letter-spacing: 0.06vw;
-      background-color: transparent;
-      background-image: url(../assets/button_border.svg);
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      text-decoration: none;
-      text-align: center;
-  }
-  .signin span{
-      background-image: linear-gradient(to right, #00ccff , #001aff) ;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-  }
-  .signin:hover{
-      box-shadow: 2px 2px 10px rgb(0,0,0,0.2);
-      background-image: url(../assets/button_fill.svg);
-  }
-  .signin:hover span{
-      background-image: linear-gradient(to right, #000000 , #000000) ;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-  }
-  .socialCont{
-      float: left;
-      margin-top: 4vh;
-      margin-left: 0%;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-  }
-  .socialCont a{
-      margin: 0% auto;
-      display: flex;
-      padding: 1.2vh;
-      width: 6vh;
-      height: 6vh;
-      border: 2px solid rgba(0, 0, 0, 0.1);
-      border-radius: 8vh;
-  }
-  .socialCont a:hover{
-      box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.486);
-  }
-  .leadmedia{
-      float: left;
-      width: 100%;
-      height: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      position: relative;
-      overflow: hidden;
-  }
-  .leadmedia div{
-      position: absolute;
-      left: 6%;
-      float: left;
-      margin-top: 20%;
-      width: 100%;
-      height: 75%;
-      background-image: url(../assets/2spiceimg.png);
-      background-size: contain;
-      background-position: 0% 30%;
-      background-repeat: no-repeat;
-      transition: 2s;
-      transform-style: preserve-3d;
-      transition-timing-function: ease;
-  }
-  .leadmedia div:hover{
+  .lead {
+    float: left;
+    width: 100%;
+    height: 100%;
+    padding: 6vh 2.5vw;
+    padding-bottom: 2vh;
+    background-image: url(../assets/stars.svg), linear-gradient(135deg, rgb(62, 80, 255) 10%, rgb(206, 59, 243) 50%, rgb(255, 171, 88) 95%);
+    background-image: url(../assets/stars.svg), -moz-linear-gradient(135deg, rgb(62, 80, 255) 10%, rgb(206, 59, 243) 50%, rgb(255, 171, 88) 95%);
+    background-image: url(../assets/stars.svg), -webkit-linear-gradient(135deg, rgb(62, 80, 255) 10%, rgb(206, 59, 243) 50%, rgb(255, 171, 88) 95%);
+    background-image: url(../assets/stars.svg), -ms-linear-gradient(135deg, rgb(62, 80, 255) 10%, rgb(206, 59, 243) 50%, rgb(255, 171, 88) 95%);
 
-      transform: rotateZ(3deg)
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
   }
-  .punchDiv{
-      float: left;
-      width: 100%;
-      height: fit-content;
-      background-image: url(../assets/punchBgGrad.png);
-      background-position: 0% 25%;
-      background-repeat: no-repeat;
-      background-size: 110%;
-      padding: 0vh 2.5vw;
 
+  .leadCont {
+    float: left;
+    width: 100%;
+    height: 50%;
   }
-  .punchDiv p{
-      float: left;
-      width: 100%;
-      padding: 15vw 5vw;
-      text-align: center;
-      font-size: 4vw;
-      font-weight: 600;
-      letter-spacing: 0.08vw;
-      line-height: 1.8;
-      color: rgb(41, 41, 41);
+
+  .leadCont h1 {
+    float: left;
+    margin-top: 3vh;
+    width: 100%;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 6vw;
+    letter-spacing: 0.1vw;
+    font-family: 'Lato', sans-serif;
   }
-  .anime{
-      float: left;
-      margin-top: -4vh;
-      width: 100%;
-      height: 38vw;
-      background-image: url(../assets/surounding.svg);
-      background-size: 130%;
-      background-position: bottom;
-      background-repeat: no-repeat;
-      position: relative;
+
+  .leadCont p {
+    float: left;
+    width: 100%;
+    margin-top: 6%;
+    padding: 0% 2%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.5vw;
+    font-weight: 400;
+    letter-spacing: 0.09vw;
+    line-height: 5vw;
+    text-align: center;
+    color: rgb(255, 255, 255);
   }
-  .circle{
-      position: absolute;
-      left: 28vw;
-      top: 0vw;
-      width: 28vw;
-      height: 28vw;
-      background-image: url(../assets/2spice_icon.svg), url(../assets/circle.svg);
-      background-size: 20%, contain;
-      background-position: center;
-      background-repeat: no-repeat;
+
+  .signup {
+    display: block;
+    margin: 0% auto;
+    margin-top: 3vh;
+    margin-left: 25%;
+    width: 50%;
+    border: none;
+    outline: none;
+    padding: 2vw 1vw;
+    font-size: 3.5vw;
+    font-weight: 600;
+    letter-spacing: 0.06vw;
+    background-color: transparent;
+    background-image: url(../assets/button_fill.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .signup:hover {
+    box-shadow: 2px 2px 10px rgb(0, 0, 0, 0.2);
+  }
+
+  .signin {
+    display: block;
+    margin: 0% auto;
+    margin-top: 2vh;
+    margin-left: 25%;
+    width: 50%;
+    border: none;
+    outline: none;
+    padding: 2vw 1vw;
+    font-size: 3.5vw;
+    font-weight: 600;
+    letter-spacing: 0.06vw;
+    background-color: transparent;
+    background-image: url(../assets/button_border.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .signin span {
+    background-image: linear-gradient(to right, #00ccff, #001aff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .signin:hover {
+    box-shadow: 2px 2px 10px rgb(0, 0, 0, 0.2);
+    background-image: url(../assets/button_fill.svg);
+  }
+
+  .signin:hover span {
+    background-image: linear-gradient(to right, #000000, #000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .socialCont {
+    float: left;
+    margin-top: 4vh;
+    margin-left: 0%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .socialCont a {
+    display: flex;
+    padding: 1.2vh;
+    width: 6vh;
+    height: 6vh;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8vh;
+    align-items: center;
+  }
+
+  .socialCont p {
+    display: flex;
+    padding: 1.2vh;
+    width: 6vh;
+    height: 6vh;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8vh;
+    align-items: center;
+  }
+
+  .socialCont a:hover {
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.486);
+  }
+
+  .leadmedia {
+    float: left;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .leadmedia div {
+    position: absolute;
+    left: 6%;
+    float: left;
+    margin-top: 20%;
+    width: 100%;
+    height: 75%;
+    background-image: url(../assets/2spiceimg.png);
+    background-size: contain;
+    background-position: 0% 30%;
+    background-repeat: no-repeat;
+    transition: 2s;
+    transform-style: preserve-3d;
+    transition-timing-function: ease;
+  }
+
+  .leadmedia div:hover {
+
+    transform: rotateZ(3deg)
+  }
+
+  .punchDiv {
+    float: left;
+    width: 100%;
+    height: fit-content;
+    background-image: url(../assets/punchBgGrad.png);
+    background-position: 0% 25%;
+    background-repeat: no-repeat;
+    background-size: 110%;
+    padding: 0vh 2.5vw;
 
   }
-  .service{
+
+  .punchDiv p {
+    float: left;
+    width: 100%;
+    padding: 15vw 5vw;
+    text-align: center;
+    font-size: 4vw;
+    font-weight: 600;
+    letter-spacing: 0.08vw;
+    line-height: 1.8;
+    color: rgb(41, 41, 41);
+  }
+
+  .anime {
+    float: left;
+    margin-top: -4vh;
+    width: 100%;
+    height: 38vw;
+    background-image: url(../assets/surounding.svg);
+    background-size: 130%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+
+  .circle {
+    position: absolute;
+    left: 28vw;
+    top: 0vw;
+    width: 28vw;
+    height: 28vw;
+    background-image: url(../assets/2spice_icon.svg), url(../assets/circle.svg);
+    background-size: 20%, contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+  }
+
+  .service {
     float: left;
     width: 100%;
     padding: 0vh 5vw;
     padding-bottom: 8vh;
     text-align: center;
   }
-  .service h1{
+
+  .service h1 {
     display: block;
     margin: 0% auto;
     width: fit-content;
     text-align: center;
     margin-top: 6vh;
     padding: 5vw 2.5vw;
-    background-image: linear-gradient(to right, #a200ff , #006cff) ;
+    background-image: linear-gradient(to right, #a200ff, #006cff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-transform: uppercase;
     letter-spacing: 0.06vw;
     font-family: 'Lato', sans-serif;
   }
-  .serviceCont{
+
+  .serviceCont {
     float: left;
     margin-top: 4vh;
     width: 100%;
     display: grid;
-    grid-template-columns: auto ;
+    grid-template-columns: auto;
     grid-gap: 4vh;
   }
-  .serviceHold{
+
+  .serviceHold {
     width: 100%;
     height: fit-content;
     padding: 8vw 4vw;
@@ -552,11 +622,13 @@
     box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.15);
     transition: 0.6s;
   }
-  .serviceHold:hover{
+
+  .serviceHold:hover {
     transform: translateY(-2vh);
     box-shadow: 2px 2px 25px rgba(60, 167, 255, 0.6);
   }
-  .serviceHold div{
+
+  .serviceHold div {
     float: left;
     width: 100%;
     height: 10vh;
@@ -564,7 +636,8 @@
     background-position: center;
     background-repeat: no-repeat;
   }
-  .serviceHold h3{
+
+  .serviceHold h3 {
     width: 100%;
     height: 12vh;
     line-height: 8vw;
@@ -572,14 +645,15 @@
     align-items: center;
     justify-content: center;
     padding: 0vh 1vw;
-    background-image: linear-gradient(to right, #00a8ff , #000cff) ;
+    background-image: linear-gradient(to right, #00a8ff, #000cff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-transform: uppercase;
     letter-spacing: 0.04vw;
     font-family: 'Lato', sans-serif;
   }
-  .serviceHold p{
+
+  .serviceHold p {
     width: 100%;
     font-size: 3.5vw;
     font-weight: 400;

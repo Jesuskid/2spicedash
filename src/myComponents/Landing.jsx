@@ -6,6 +6,11 @@ import styles from '../css/Landing.module.css';
 function Landing() {
     const [back, setBack] = useState('navBar-trans')
 
+    function sendOut(lnk) {
+        alert('clicked')
+        window.location.assign = lnk;
+    }
+
     function some() {
         document.addEventListener('scroll', handleScroll);
         function handleScroll() {
@@ -41,9 +46,11 @@ function Landing() {
                         </p>
                         <Link to="/auth" state={{ 'login': false }} className={styles.signup}><span>Sign Up</span></Link>
                         <Link to="/auth" state={{ 'login': true }} className={styles.signin}><span>Sign In</span></Link>
+                        <a href='https://discord.gg/q8qnUTXYBY' target='_blank'></a>
                         <div className={styles.socialCont}>
-                            <Link to="#" id={styles.discord}>
-                                <svg viewBox="0 0 598 455" fill="none"
+                            <p style={{ display: "none" }}></p>
+                            <a className='socialConta' onClick={() => sendOut('https://discord.gg/q8qnUTXYBY')} href='https://discord.gg/q8qnUTXYBY' target='_blank' id={'discord'}>
+                                <svg length="auto" onClick={() => sendOut('https://discord.gg/q8qnUTXYBY')} viewBox="0 0 598 455" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path d="M506.32 38.4278C506.154 38.1062 505.879 37.8541 505.544 37.7169C466.826 
                             19.9522 425.966 7.28459 383.988 0.0310717C383.607 -0.03983 383.213 0.0113193 382.862 
@@ -81,19 +88,18 @@ function Landing() {
                             451.664 250.189C451.664 283.353 428.124 310.355 397.994 310.355Z"
                                         fill="white" />
                                 </svg>
-
-                            </Link>
-                            <Link to="#" id={styles.telegram}>
-                                <svg viewBox="0 0 569 477" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            </a>
+                            <a className='socialConta' href='https://t.me/spice_channe' >
+                                <svg length="auto" viewBox="0 0 569 477" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M567.079 43.4187L481.259 448.145C474.784 476.71 457.899 483.819 433.905 470.362L303.143 374.005L240.048 434.688C233.065 441.671 227.225 447.511 213.768 447.511L223.163 314.337L465.516 95.3426C476.054 85.948 463.231 80.7429 449.139 90.1375L149.53 278.79L20.5457 238.419C-7.51097 229.659 -8.01878 210.362 26.3855 196.905L530.897 2.53982C554.257 -6.21994 574.696 7.7449 567.079 43.4187V43.4187Z" fill="white" />
                                 </svg>
-                            </Link>
-                            <Link to="#" id={styles.twitter}>
-                                <svg viewBox="0 0 565 459" fill="none"
+                            </a>
+                            <a className='socialConta' href='https://twitter.com/2spice2?s=21&t=V0fpd6mBdcqvAYXzzOAzuA'>
+                                <svg lengthAdjust="auto" viewBox="0 0 565 459" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path d="M564.813 54.3339C544.05 63.5634 521.704 69.789 498.257 72.5751C522.197 58.2435 540.553 35.5423 549.209 8.46136C526.817 21.7496 502.029 31.3919 475.625 36.5971C454.494 14.0793 424.375 0 391.046 0C327.058 0 275.178 51.8803 275.178 115.879C275.178 124.948 276.198 133.788 278.182 142.284C181.873 137.446 96.4802 91.3208 39.3258 21.2107C29.3511 38.3169 23.6414 58.2206 23.6414 79.4772C23.6414 119.674 44.0954 155.148 75.1892 175.923C56.2027 175.315 38.3284 170.099 22.7012 161.419C22.6897 161.901 22.6897 162.394 22.6897 162.887C22.6897 219.021 62.6347 265.845 115.65 276.508C105.928 279.145 95.6891 280.566 85.1181 280.566C77.6427 280.566 70.3852 279.844 63.3112 278.48C78.0669 324.513 120.855 358.026 171.555 358.954C131.896 390.037 81.9422 408.565 27.6427 408.565C18.2986 408.565 9.06902 408.014 0 406.936C51.2956 439.83 112.199 459 177.631 459C390.782 459 507.326 282.435 507.326 129.305C507.326 124.283 507.223 119.273 507.005 114.297C529.638 97.9936 549.289 77.5739 564.813 54.3339Z" fill="white" />
                                 </svg>
-                            </Link>
+                            </a>
                         </div>
                     </div>
                     <div className={styles.leadmedia}>

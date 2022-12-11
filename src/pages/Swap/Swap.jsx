@@ -26,6 +26,7 @@ const Swap = () => {
 
     const [token1Value, setToken1Value] = useState('')
     const [token2Value, setToken2Value] = useState('')
+    const [notSvailableForSwap, setNotAvailableForSwap] = useState(true)
 
     const tokens = [{ id: 'BUSD', img: busd }, { id: 'SPICE', img: spice }]
 
@@ -103,14 +104,27 @@ const Swap = () => {
                     functionName: 'approve',
                     params: {
                         spender: SPICE_CONTRACT_ADDRESS,
-                        amount
+                        amount: maxAmount
 
                     }
                 }
 
+                const allowance = {
+                    abi: SPICE_ABI,
+                    contractAddress: SPICE_CONTRACT_ADDRESS,
+                    functionName: 'allowance',
+                    params: {
+                        owner: account,
+                        spender: SPICE_CONTRACT_ADDRESS
+                    }
+                }
 
-                const approve = await Moralis.executeFunction(approveSpice)
-                await approve.wait()
+                const allowanceGet = await Moralis.executeFunction(allowance)
+
+                if (allowanceGet < amount) {
+                    const approve = await Moralis.executeFunction(approveSpice)
+                    await approve.wait()
+                }
 
                 const sell = {
                     abi: SPICE_ABI,
@@ -136,13 +150,26 @@ const Swap = () => {
                     functionName: 'approve',
                     params: {
                         spender: SPICE_CONTRACT_ADDRESS,
-                        amount
+                        amount: maxAmount
                     }
                 }
 
+                const allowance = {
+                    abi: BUSD_ABI,
+                    contractAddress: BUSD_CONTRACT_ADDRESS,
+                    functionName: 'allowance',
+                    params: {
+                        owner: account,
+                        spender: SPICE_CONTRACT_ADDRESS
+                    }
+                }
 
-                const approve = await Moralis.executeFunction(approveBusd)
-                await approve.wait()
+                const allowanceGet = await Moralis.executeFunction(allowance)
+
+                if (allowanceGet < amount) {
+                    const approve = await Moralis.executeFunction(approveBusd)
+                    await approve.wait()
+                }
 
                 const buy = {
                     abi: SPICE_ABI,
@@ -180,6 +207,8 @@ const Swap = () => {
 
             const price = await contract.fetchPCSPrice()
             setDemoPrice(ethers.utils.formatEther(price))
+            setNotAvailableForSwap(false)
+
         })
     }
 
@@ -208,7 +237,7 @@ const Swap = () => {
                         </div>
                     </div>
                     <div className='d-flex flex-row w-100 info-area py-2 px-3'>
-                        <input onChange={(e) => { setValues1(e) }} value={token1Value} className='special-input' placeholder='0.0'></input>
+                        <input disabled={notSvailableForSwap} onChange={(e) => { setValues1(e) }} value={token1Value} className='special-input' placeholder='0.0'></input>
                         <div onClick={() => setshowModal(true)}>
                             {/* <small>Balance: 0.92782</small> */}
                             <div className='d-flex currency-tab p-2 flex-row justify-content-between'>

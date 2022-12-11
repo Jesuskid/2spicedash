@@ -13,6 +13,10 @@ const VerifyRequest = () => {
 
         query.equalTo('link', link)
         const result = await query.first()
+        if (result === "undefined") {
+            setState('Invalid Request Link')
+            return
+        }
 
         const now = new Date()
 

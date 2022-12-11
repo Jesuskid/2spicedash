@@ -482,7 +482,7 @@ const Roll = ({ send_gems, deduct_gems, loadGems }) => {
                     <Col className='border-right px-2 py-3' md={4}>
                         <div>
                             <div className='indicator-bar'>Max Profit per bet</div>
-                            <div className='invert-indicator-bar'>{maxAmount * 0.5} Spice</div>
+                            <div className='invert-indicator-bar'>{maxAmount * 1.5} Spice</div>
 
                         </div>
 
@@ -499,7 +499,7 @@ const Roll = ({ send_gems, deduct_gems, loadGems }) => {
 
                         <div className='d-flex flex-row pt-3'>
                             <div className='indicator-bar-right'>Win Profit</div>
-                            <div className='invert-indicator-bar right-only-border w-50'>{Math.round((betAmount * 0.5) * 100) / 100} Spice</div>
+                            <div className='invert-indicator-bar right-only-border w-50'>{Math.round((betAmount * 1.5) * 100) / 100} Spice</div>
                         </div>
 
                         <Row className='py-4'>
@@ -545,7 +545,7 @@ const Roll = ({ send_gems, deduct_gems, loadGems }) => {
                             <button onClick={() => play_roll('LO')} className='yellow-btn'>BET LO</button>
                         </div>}
                         {manWin == true && hasPlayed == true ? <div className='result text-black my-2'>
-                            {`You BET ${recentBet} so you win ${jackpot ? (betAmount * 1.5) + jackpotChoice['prize'] : (betAmount * 0.5)} GEMS!`}
+                            {`You BET ${recentBet} so you win ${jackpot ? (betAmount * 1.5) + jackpotChoice['prize'] : (betAmount * 1.5)} GEMS!`}
                         </div> : ''
                         }
                         {manWin == false && hasPlayed == true ? <div className='result-lost text-black my-2'>
@@ -607,7 +607,7 @@ const Roll = ({ send_gems, deduct_gems, loadGems }) => {
                                     <div>
                                         <div className='indicator-bar-right'>Bet Odds ?</div>
                                         <div className='dark-background p-2'>
-                                            <input value='20' className='inner-input w-100' />
+                                            <input disabled value='20' className='inner-input w-100' />
                                         </div>
                                     </div></Col>
                                 <Col>

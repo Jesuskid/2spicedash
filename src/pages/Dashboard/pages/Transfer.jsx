@@ -25,8 +25,8 @@ const Transfer = () => {
     const [token1, setToken1] = useState({ id: 'BUSD', img: busd })
     const [token2, setToken2] = useState({ id: 'SPICE', img: spice })
 
-    const [token1Value, setToken1Value] = useState('')
-    const [token2Value, setToken2Value] = useState('')
+    const [token1Value, setToken1Value] = useState('0')
+    const [token2Value, setToken2Value] = useState('0')
 
     const [transactionKey, setTransactionKey] = useState('')
 
@@ -87,29 +87,20 @@ const Transfer = () => {
 
 
 
-    const func = async () => {
-        if (!isWeb3Enabled) {
-            await Moralis.enableWeb3().then(async () => {
-                const price = await Moralis.executeFunction({
-                    contractAddress: SPICE_CONTRACT_ADDRESS,
-                    functionName: "fetchPCSPrice",
-                    abi: SPICE_ABI,
+    const getPrice = async () => {
+        window.ethersProvider.getGasPrice().then(async (currentGasPrice) => {
+            const provider = window.ethersProvider
+            let contract = new ethers.Contract(
+                SPICE_CONTRACT_ADDRESS,
+                SPICE_ABI,
+                provider
+            )
 
-                })
-                setDemoPrice(ethers.utils.formatEther(price))
-                console.log(price)
-            })
-        } else {
-            const price = await Moralis.executeFunction({
-                contractAddress: SPICE_CONTRACT_ADDRESS,
-                functionName: "fetchPCSPrice",
-                abi: SPICE_ABI,
-
-            })
+            const price = await contract.fetchPCSPrice()
             setDemoPrice(ethers.utils.formatEther(price))
-        }
-
+        })
     }
+
 
 
     const swap = (
@@ -202,8 +193,8 @@ const Transfer = () => {
 
 
     useEffect(() => {
-        func()
-    }, [token1])
+        getPrice()
+    }, [, token1])
 
     return (
         <div className=''>

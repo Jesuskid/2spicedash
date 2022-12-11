@@ -13,6 +13,7 @@ const Reset = () => {
     const [loading, setLoading] = useState(false)
 
     const check = async () => {
+        setLoading(true)
         let link = window.location.href
         const Request = Moralis.Object.extend('PasswordResets')
         const query = new Moralis.Query(Request)
@@ -31,10 +32,12 @@ const Reset = () => {
             await Moralis.Cloud.run('verifyPasswordReset', params).then(async () => {
                 await changePass(result.get('email'), newPassword)
                 await Moralis.User.current()?.fetch()
-                alert('password reset successfully')
+                setLoading(false)
                 window.location.assign(`${window.location.origin}/auth`)
+
             }).catch((err) => {
-                console.log(err)
+                setLoading(false)
+                alert.log(err)
             })
         } else {
             alert('Invalid Request Link')
@@ -56,7 +59,7 @@ const Reset = () => {
                     <div className='d-flex justify-content-center mt-3'>
                         <div className='w-50'>
                             <input className='form-control' onChange={(e) => { setNewPassword(e.target.value) }} />
-                            {!loading ? (newPassword.length > 6 ? <Button className='w-100 my-2 red-btn' onClick={() => check()}>Reset</Button> : <Button disabled className='w-100 my-2 red-btn' >Reset</Button>) :
+                            {loading == false ? (newPassword.length > 6 ? <Button className='w-100 my-2 red-btn' onClick={() => check()}>Reset</Button> : <Button disabled className='w-100 my-2 red-btn' >Reset</Button>) :
                                 <Button className='w-100 my-2 red-btn'>
                                     <div class="spinner-border text-light" role="status">
                                         <span className="sr-only"></span></div></Button>}

@@ -2,78 +2,77 @@ import { generate_random_string } from "../../Constants";
 import axios from 'axios';
 import Cookies from "js-cookie";
 
-export function registerOnMainSite(email, name, password) {
-    const newUserId = generate_random_string(20)
+export async function registerOnMainSite(email, name, password, newUserBlogId) {
     let formdata = new FormData();
-    formdata.append('email', email);
-    formdata.append('userID', newUserId);
+    formdata.append('email', email.toLowerCase());
+    formdata.append('userID', newUserBlogId);
     formdata.append('name', name);
     formdata.append('password', password);
-    axios({
-        url: `https://2spice.link/app/backend/newaccount.php`,
-        method: 'POST',
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        },
-        data: formdata
-    })
-        .then(function (res) {
-            if (res.data === 'Account already exist') {
-                console.log('exists')
-                alert(res.data);
-            }
-            else if (res.data === newUserId) {
-                let dt = new Date();
-                // Cookies.remove('data')
-                // Cookies.set('data', newUserId, { expires: 365 }, { domain: 'localhost' })
-                Cookies.set('data', newUserId, { expires: 365, domain: '.2spice.link' })
-                localStorage.setItem('username', res.data);
-                localStorage.setItem('lastLog', dt);
-                console.log('detail')
-            }
-            else {
-                console.log(res);
-            }
+    try {
+        await axios({
+            url: `https://2spice.link/app/backend/newaccount.php`,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            },
+            data: formdata
         })
-        .catch(function (err) {
-            console.log(err);
-        })
+            .then(function (res) {
+                if (res.data === 'Account already exist') {
+                    console.log('exists')
+                    alert(res.data);
+                }
+                else if (res.data === newUserBlogId) {
+                    let dt = new Date();
+                    // Cookies.remove('data')
+                    // Cookies.set('data', newUserBlogId, { expires: 365, domain: 'localhost' })
+                    // Cookies.set('data', newUserBlogId, { expires: 365, domain: '.2spice.link' })
+                    localStorage.setItem('username', res.data);
+                    localStorage.setItem('lastLog', dt);
+                    console.log('detail')
+                }
+                else {
+                    console.log(res);
+                }
+            })
+            .catch(function (err) {
+                console.log(err);
+            })
+    } catch (err) {
+        alert(err)
+    }
+
 }
 
 
 export const loginMainWebsite = async (email, password) => {
     let formdata = new FormData();
-    formdata.append('email', email);
+    formdata.append('email', email.toLowerCase());
     formdata.append('password', password);
-    axios({
-        url: `https://2spice.link/app/backend/accessaccount.php`,
-        method: 'POST',
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        },
-        data: formdata
-    })
-        .then(async function (res) {
-            if (res.data === 'Wrong Details') {
-                alert('wrong details')
-            }
-            else {
-                console.log('loggedIn')
-                let dt = new Date();
-                Cookies.set('data', res.data, { expires: 365, domain: '.2spice.link' })
-                // Cookies.set('data', res.data, { expires: 365, domain: 'localhost' })
-                localStorage.setItem('username', res.data);
-                localStorage.setItem('lastLog', dt);
-                window.location.reload()
-                window.location.replace(window.location.origin)
-            }
-
+    try {
+        axios({
+            url: `https://2spice.link/app/backend/accessaccount.php`,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            },
+            data: formdata
         })
-        .catch(function (err) {
-            alert(err)
-            console.log(err);
-        })
+            .then(async function (res) {
+                if (res.data === 'Wrong Details') {
+                }
+                else {
+                    console.log('loggedIn')
+                }
 
+            })
+            .catch(function (err) {
+                console.log(err);
+            })
+
+    } catch (err) {
+        alert(err)
+    }
 
 
 }
@@ -103,9 +102,9 @@ export const logoutOnMian = async (email, password) => {
 
 export const changePass = async (email, newPassword) => {
     let formdata = new FormData();
-    formdata.append('email', email);
+    formdata.append('email', email.toLowerCase());
     formdata.append('password', newPassword);
-    alert(formdata)
+
     axios({
         url: `https://2spice.link/app/backend/changePassword.php`,
         method: 'POST',
@@ -116,10 +115,11 @@ export const changePass = async (email, newPassword) => {
     })
         .then(function (res) {
             if (res.data === 'Success') {
-                alert('Password changed');
+                // alert('Password changed');
                 if (localStorage.getItem('username') !== null) {
                     localStorage.removeItem('username');
                     Cookies.remove('data')
+                    alert('password reset successfully')
                 }
             }
             else {

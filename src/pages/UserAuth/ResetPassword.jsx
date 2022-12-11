@@ -29,7 +29,7 @@ const ResetPassword = () => {
 
     const passwordReset = async () => {
         setLoading(true)
-        const params = { 'email': email, 'env': 'live' }
+        const params = { 'email': email.toLowerCase(), 'env': 'live' }
         await Moralis.Cloud.run('requestPasswordRequest', params).then(async () => {
             alert('Password Request send to email')
             setEmail('')

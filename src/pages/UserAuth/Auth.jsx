@@ -10,7 +10,8 @@ import AES from 'crypto-js/aes'
 import enc from 'crypto-js/enc-utf8'
 import ResetPassword from './ResetPassword'
 import { registerOnMainSite, loginMainWebsite } from './AuthFunctions'
-
+import { generate_random_string } from "../../Constants";
+import Cookies from 'js-cookie'
 
 const Auth = () => {
 
@@ -29,7 +30,7 @@ const Auth = () => {
     const [passwordErrors, setPasswordErrors] = useState(<></>)
 
 
-    const { authenticate, isInitialized, isAuthenticated, Moralis } = useMoralis();
+    const { authenticate, isInitialized, isAuthenticated, Moralis, user } = useMoralis();
 
     const up = async () => {
         if (runPinChecks() == false) {
@@ -56,29 +57,30 @@ const Auth = () => {
         const new_wallet = ethers.Wallet.createRandom()
         let key = new_wallet.privateKey
         let encrypted = AES.encrypt(key.toString(), walletpin)
+        const newUserBlogId = generate_random_string(20)
 
 
         // console.log(kilo2)
 
+
         console.log(isInitialized)
         const user = new Moralis.User()
         user.set('username', username)
-        user.set('email', email)
+        user.set('email', email.toLowerCase())
         user.set('password', password)
         user.set('gem_balance', 0)
         user.set('gen_account', new_wallet.address)
         user.set('gen_private_key', encrypted.toString())
+        user.set('blog_id', newUserBlogId)
 
 
         try {
-            await user.signUp().then(async () => {
-                registerOnMainSite(email, username, password);
+            await user.signUp({ usePost: true }).then(async () => {
+                await registerOnMainSite(email, username, password, newUserBlogId);
+                Cookies.set('data', newUserBlogId, { expires: 365, domain: 'localhost' })
+                Cookies.set('data', newUserBlogId, { expires: 365, domain: '.2spice.link' })
             }).then(async () => {
                 console.log('success')
-                // await Moralis.User.requestEmailVerification(email).then(() => {
-                //     setLoading(false)
-                //     window.location.reload()
-                // })
                 await Moralis.Cloud.run('requestEmailVerify').then(() => {
                     setLoading(false)
                     window.location.reload()
@@ -104,12 +106,13 @@ const Auth = () => {
 
         setLoading(true)
         try {
-            await Moralis.User.logIn(email, password).then(async () => {
-                const res = await loginMainWebsite(email, password).then(() => {
-                    // window.location.reload()
-                })
-
-
+            await Moralis.User.logIn(email, password, { usePost: true }).then(async (user) => {
+                const userBlogId = user.get('blog_id')
+                console.log(userBlogId)
+                Cookies.set('data', userBlogId, { expires: 365, domain: 'localhost' })
+                Cookies.set('data', userBlogId, { expires: 365, domain: '.2spice.link' })
+                await loginMainWebsite(email.toLowerCase(), password)
+                window.location.reload()
             }).catch((err) => {
                 console.log(err)
                 setError('Wrong username or passowrd')
